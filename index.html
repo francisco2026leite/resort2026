@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paradiso Tropical Resort - Premium</title>
+    <!-- Link para o arquivo CSS externo -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>🏝️ Paradiso Tropical</h1>
+        <nav>
+            <a href="#acomodacoes">Acomodações</a>
+            <a href="#reserva">Reservar</a>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h2>Seu paraíso particular espera por você</h2>
+        <p>Experiências inesquecíveis com conforto premium de frente para o mar.</p>
+    </div>
+
+    <main>
+                <!-- Seção de Acomodações com Imagens Locais -->
+        <section id="acomodacoes">
+            <h2 class="section-title">Nossas Acomodações</h2>
+            <div class="rooms-grid">
+                
+                <!-- Quarto Solteiro Premium -->
+                <div class="room-card">
+                    <div class="gallery-container" id="galeria-solteiro">
+                        <button type="button" class="gallery-btn prev" onclick="moveGallery('galeria-solteiro', -1)">❮</button>
+                        <button type="button" class="gallery-btn next" onclick="moveGallery('galeria-solteiro', 1)">❯</button>
+                        <div class="gallery-track">
+                            <!-- Fotos locais do quarto de solteiro -->
+                            <div class="gallery-slide" style="background-image: url('imagens/solteiro-1.jpg');"></div>
+                            <div class="gallery-slide" style="background-image: url('imagens/solteiro-2.jpg');"></div>
+                            <div class="gallery-slide" style="background-image: url('imagens/solteiro-3.jpg');"></div>
+                        </div>
+                    </div>
+                    <div class="room-info">
+                        <div>
+                            <h3>Suíte Solteiro Premium</h3>
+                            <p>Perfeito para viajantes individuais. Equipado com cama de solteiro king-size, Wi-Fi de alta velocidade, frigobar e varanda privativa.</p>
+                        </div>
+                        <div class="room-price">R$ 250,00 / diária</div>
+                    </div>
+                </div>
+
+                <!-- Quarto Casal Luxo -->
+                <div class="room-card">
+                    <div class="gallery-container" id="galeria-casal">
+                        <button type="button" class="gallery-btn prev" onclick="moveGallery('galeria-casal', -1)">❮</button>
+                        <button type="button" class="gallery-btn next" onclick="moveGallery('galeria-casal', 1)">❯</button>
+                        <div class="gallery-track">
+                            <!-- Fotos locais do quarto de casal -->
+                            <div class="gallery-slide" style="background-image: url('imagens/casal-1.jpg');"></div>
+                            <div class="gallery-slide" style="background-image: url('imagens/casal-2.jpg');"></div>
+                            <div class="gallery-slide" style="background-image: url('imagens/casal-3.jpg');"></div>
+                        </div>
+                    </div>
+                    <div class="room-info">
+                        <div>
+                            <h3>Suíte Casal Luxo</h3>
+                            <p>Ideal para casais. Dispõe de cama queen-size, ar-condicionado, TV 4K, banheira de hidromassagem e vista panorâmica para o mar.</p>
+                        </div>
+                        <div class="room-price">R$ 450,00 / diária</div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Seção de Formulário em Etapas -->
+        <section id="reserva">
+            <h2 class="section-title">Faça sua Reserva</h2>
+            <div class="booking-container">
+                
+                <div class="steps-indicator">
+                    <span class="step active" id="stepIndicator1">1. Identificação</span>
+                    <span class="step" id="stepIndicator2">2. Estadia</span>
+                    <span class="step" id="stepIndicator3">3. Pagamento</span>
+                </div>
+
+                <form id="multiStepForm">
+                    <!-- ETAPA 1: Identificação -->
+                    <div class="form-step active" id="step1">
+                        <h3 class="step-title">Dados do Hóspede</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="nome">Nome Completo</label>
+                                <input type="text" id="nome" required placeholder="Ex: João Silva">
+                            </div>
+                            <div class="form-group">
+                                <label for="cpf">CPF</label>
+                                <input type="text" id="cpf" required placeholder="000.000.000-00" maxlength="14">
+                            </div>
+                        </div>
+                        <div class="step-buttons">
+                            <div></div>
+                            <button type="button" class="btn" onclick="nextStep(2)">Próximo Passo ❯</button>
+                        </div>
+                    </div>
+
+                    <!-- ETAPA 2: Detalhes da Estadia -->
+                    <div class="form-step" id="step2">
+                        <h3 class="step-title">Detalhes da Hospedagem</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="quarto">Tipo de Quarto</label>
+                                <select id="quarto" required>
+                                    <option value="" disabled selected>Escolha sua acomodação</option>
+                                    <option value="solteiro" data-price="250">Solteiro Premium (R$ 250/dia)</option>
+                                    <option value="casal" data-price="450">Casal Luxo (R$ 450/dia)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="checkin">Data de Entrada</label>
+                                <input type="date" id="checkin" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="checkout">Data de Saída</label>
+                                <input type="date" id="checkout" required>
+                            </div>
+                        </div>
+                        <div class="step-buttons">
+                            <button type="button" class="btn btn-secondary" onclick="prevStep(1)">❮ Voltar</button>
+                            <button type="button" class="btn" onclick="nextStep(3)">Próximo Passo ❯</button>
+                        </div>
+                    </div>
+
+                    <!-- ETAPA 3: Opções de Pagamento -->
+                    <div class="form-step" id="step3">
+                        <h3 class="step-title">Escolha a Forma de Pagamento</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="pagamento">Método de Pagamento</label>
+                                <select id="pagamento" required>
+                                    <option value="" disabled selected>Selecione</option>
+                                    <option value="pix">Pix (5% de Desconto)</option>
+                                    <option value="cartao_credito">Cartão de Crédito (até 12x)</option>
+                                    <option value="cartao_debito">Cartão de Débito</option>
+                                    <option value="boleto">Boleto Bancário</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="step-buttons">
+                            <button type="button" class="btn btn-secondary" onclick="prevStep(2)">❮ Voltar</button>
+                            <button type="submit" class="btn btn-success">Finalizar Reserva 🎉</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal Interativo de Pagamento Final -->
+    <div class="modal" id="paymentModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h3 class="modal-success-title">✔ Reserva Solicitada com Sucesso!</h3>
+            <p id="modalWelcome"></p>
+            
+            <div id="paymentArea" class="payment-dynamic-area"></div>
+            
+            <button type="button" class="btn" style="width: 100%;" onclick="closeModal()">Concluir e Fechar</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Paradiso Tropical Resort. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Link para o arquivo JavaScript externo -->
+    <script src="script.js"></script>
+</body>
+</html>
